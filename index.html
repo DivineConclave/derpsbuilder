@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=0.8, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic');
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css');
+
+        body {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .half-width {
+            width: 50%;
+        }
+
+        container {
+            position: relative;
+        }
+
+        #copyMessage {
+            display: none;
+            position: absolute;
+            top: -30px;
+            left: 0;
+            background-color: #f1f1f1;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+    <title>DERPS Character Sheet Builder</title>
+    <script>
+        function clickProcess(e) {
+            e.preventDefault();
+            const form = document.getElementById("form");
+            const fields = Array.from(form.elements).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
+
+            const md = `# ● D.E.R.P. Character Sheet ●
+
+&#10;
+&#10;
+
+# ${fields['charName']}
+
+## ${fields['quote']}
+
+&#10;
+&#10;
+
+## ${fields['path']}
+
+&#10;
+&#10;
+
+## ${fields['writ']}
+
+&#10;
+&#10;
+
+# ARENA STATS ──────────
+| HP: ${fields['hp']} | SP: ${fields['sp']} | MP: ${fields['mp']} | 
+|----------|----------|----------|
+| Calling: ${fields['calling']} | Paragon: ${fields['paragon']}   | Participation: +${fields['league']} |
+
+&#10;
+&#10;
+
+# VIRTUE POINTS ──────────
+Points Earned = ${fields['vp']}
+
+|VIRTUE     |GIVES|Points|
+|-----------|-----|------|
+|Fortitude:| +${fields['fortgive']}   | +${fields['fort']}    |
+|Cunning:  | +${fields['cungive']}   | +${fields['cun']}    |
+|Judgement:| +${fields['judgive']}   | +${fields['jud']}    |
+
+&#10;
+&#10;
+
+# ARSENAL ──────────
+|NAME|EXPLANATION|COST|REQ|
+|---|---|---|---|
+|${fields['ability1']}|${fields['exp1']}|${fields['cost1']}|${fields['req1']}|
+|${fields['ability2']}|${fields['exp2']}|${fields['cost2']}|${fields['req2']}|
+|${fields['ability3']}|${fields['exp3']}|${fields['cost3']}|${fields['req3']}|
+
+&#10;
+&#10;
+
+# FORGE OF HOPE ITEM ──────────
+|ITEM|NAME|EFFECT|HOLY NUM|
+|---|---|---|---|
+|${fields['fhitem']}|${fields['fhname']}|${fields['fheffect']}|${fields['fhholy']}|
+
+&#10;
+&#10;
+
+# MUNDUS STONE ──────────
+|NAME|PASSIVE EFFECT|OVERSEER |DATE|
+|---|---|---|
+|${fields['msname']}|${fields['mseffect']}|${fields['msoverseer']}|${fields['msdate']}|`;
+
+            const textarea = document.querySelector("textarea");
+            textarea.value = md;
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+            document.execCommand('copy');
+            const copyMessage = document.getElementById('copyMessage');
+            copyMessage.style.display = 'block';
+            setTimeout(() => {
+                copyMessage.style.display = 'none';
+            }, 10000);
+        };
+    </script>
+</head>
+
+<body>
+    <div style="width: 75%">
+        <form autocomplete="on" id="form">
+            <h1><input style="width: 50%; max-width: 300px;" type="text" placeholder="Character Name" name="charName" />
+            </h1>
+
+            <h3><input type="text" placeholder="Quote" name="quote" /></h3>
+
+            <label for="path">Path:</label>
+            <h2><select style="width: 50%; max-width: 300px;" name="path" id="paths">
+                    <option>NO PATH</option>
+                    <option>WARRIOR</option>
+                    <option>ROGUE</option>
+                    <option>MAGE</option>
+                </select></h2>
+
+            <h2><input type="text" placeholder="Writ of Ascension" name="writ" /></h2>
+
+            <h1>ARENA STATS ──────────</h1>
+            <table>
+                <tr>
+                    <td>HP:</td>
+                    <td><input type="number" name="hp" min="6" max="8" value="6" /></td>
+                    <td>SP:</td>
+                    <td><input type="number" name="sp" min="0" max="8" value="0" /></td>
+                    <td>MP:</td>
+                    <td><input type="number" name="mp" min="0" max="8" value="0" /></td>
+                </tr>
+                <tr>
+                    <td>Calling:</td>
+                    <td><select name="calling" id="callings" value="No Calling">
+                            <option>No Calling</option>
+                            <option>Knight</option>
+                            <option>Zealot</option>
+                            <option>Crusader</option>
+                            <option>Operative</option>
+                            <option>Infiltrator</option>
+                            <option>Duelist</option>
+                            <option>Spellblade</option>
+                            <option>Mystic</option>
+                            <option>Warlock</option>
+                        </select></td>
+                    <td>Paragon Bonus:</td>
+                    <td><select name="paragon" id="paragonBonuses" value="N/A">
+                            <option>N/A</option>
+                            <option>+1 HP</option>
+                            <option>+1 SP</option>
+                            <option>+1 MP</option>
+                        </select></td>
+                    <td>League Passive:</td>
+                    <td><input type="number" name="league" min="0" max="2" value="0" /></td>
+                </tr>
+            </table>
+
+            <h1>VIRTUE POINTS ──────────</h1>
+            <label for="vp">Points Earned =</label><input style="" type="number" name="vp" min="0" max="5" value="0" />
+            <h3>Virtue Point Assignments</h3>
+            <table>
+                <thead>
+
+                </thead>
+                <tr>
+                    <td>Fortitude:</td>
+                    <td><input type="number" name="fortgive" min="0" max="1" value="0" /></td>
+                    <td><input type="number" name="fort" min="0" max="5" /></td>
+                </tr>
+                <tr>
+                    <td>Cunning:</td>
+                    <td><input type="number" name="cungive" min="0" max="1" value="0" /></td>
+                    <td><input type="number" name="cun" min="0" max="5" /></td>
+                </tr>
+                <tr>
+                    <td>Judgement:</td>
+                    <td><input type="number" name="judgive" min="0" max="1" value="0" /></td>
+                    <td><input type="number" name="jud" min="0" max="5" /></td>
+                </tr>
+            </table>
+
+            <h1>ARSENAL ──────────</h1>
+            <table>
+                <tr>
+                    <datalist id="abilities">
+                        <option value="None"></option>
+                        <option value="Concussion"></option>
+                        <option value="Rejuvenation Expert"></option>
+                        <option value="Magickal Healer"></option>
+                        <option value="Debilitating Strike"></option>
+                        <option value="Staggering Blow"></option>
+                        <option value="Magical Accuracy"></option>
+                        <option value="Keen Accuracy"></option>
+                        <option value="Magical Defense"></option>
+                        <option value="Keen Defense"></option>
+                        <option value="Magical Damage"></option>
+                        <option value="Keen Damage"></option>
+                        <option value="Bodyguard"></option>
+                        <option value="Divines Light"></option>
+                        <option value="Intervention"></option>
+                        <option value="Tactical Retreat"></option>
+                        <option value="Grit"></option>
+                        <option value="Blur"></option>
+                        <option value="Foresight"></option>
+                        <option value="Opportunist"></option>
+                        <option value="Combat Accuracy"></option>
+                        <option value="Defensive Stance"></option>
+                    </datalist>
+                    <datalist id="callingAbilities">
+                        <option value="Wall of Steel"></option>
+                        <option value="Divine Fury"></option>
+                        <option value="Resolute Smite"></option>
+                        <option value="Tricks of the Trade"></option>
+                        <option value="Tactician"></option>
+                        <option value="Quick Strike"></option>
+                        <option value="Enchanted Weapon"></option>
+                        <option value="Mara's Touch"></option>
+                        <option value="Elemental Barrage"></option>
+                    </datalist>
+                    <td><input type="text" list="abilities" placeholder="Ability 1" name="ability1" /></td>
+                    <td><input type="text" placeholder="Explanation" name="exp1" /></td>
+                    <td><input type="text" placeholder="Cost" name="cost1" /></td>
+                    <td><input type="text" placeholder="Requirement" name="req1" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" list="abilities" placeholder="Ability 2" name="ability2" /></td>
+                    <td><input type="text" placeholder="Explanation" name="exp2" /></td>
+                    <td><input type="text" placeholder="Cost" name="cost2" /></td>
+                    <td><input type="text" placeholder="Requirement" name="req2" /></td>
+                </tr>
+                <tr>
+                    <td><input type="text" list="callingAbilities" placeholder="Ability 3" name="ability3" /></td>
+                    <td><input type="text" placeholder="Explanation" name="exp3" /></td>
+                    <td><input type="text" placeholder="Cost" name="cost3" /></td>
+                    <td><input type="text" placeholder="Requirement" name="req3" /></td>
+                </tr>
+            </table>
+
+            <h1>FORGE OF HOPE ITEM ──────────</h1>
+            <table>
+                <tr>
+                    <td>ITEM:</td>
+                    <td><input type="text" name="fhitem" /></td>
+                    <td>NAME:</td>
+                    <td><input type="text" name="fhname" /></td>
+                    <td>EFFECT:</td>
+                    <td><input type="text" name="fheffect" /></td>
+                    <td>HOLY NUM:</td>
+                    <td><input type="text" name="fhholy" /></td>
+                </tr>
+            </table>
+
+            <h1>MUNDUS STONE ──────────</h1>
+            <table>
+                <tr>
+                    <td>NAME:</td>
+                    <td><input type="text" name="msname" /></td>
+                    <td>PASSIVE EFFECT:</td>
+                    <td><input type="text" name="mseffect" /></td>
+                    <td>OVERSEER :</td>
+                    <td><input type="text" name="msoverseer" /></td>
+                    <td>DATE:</td>
+                    <td><input type="date" name="msdate" /></td>
+                </tr>
+            </table>
+
+            <input onclick="clickProcess(event)" type="button" class="button" value="Process"></input>
+        </form>
+    </div>
+    <div class="container">
+        <div id="copyMessage">Copied to clipboard!</div>
+        <textarea readonly style="width: 90%; height: 500px;" name="output" id="output"></textarea>
+    </div>
+</body>
+
+</html>
