@@ -3,14 +3,6 @@ body {
     margin: 0 auto;
 }
 
-.half-width {
-    width: 50%;
-}
-
-container {
-    position: relative;
-}
-
 #copyMessage {
     display: none;
     position: absolute;

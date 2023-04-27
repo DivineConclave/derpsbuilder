@@ -1,0 +1,371 @@
+{
+    "paths": [
+        "NO PATH",
+        "WARRIOR",
+        "ROGUE",
+        "MAGE"
+    ],
+    "callings": {
+        "NO PATH": [
+            "NO CALLING"
+        ],
+        "WARRIOR": [
+            "NO CALLING",
+            "KNIGHT",
+            "ZEALOT",
+            "CRUSADER"
+        ],
+        "ROGUE": [
+            "NO CALLING",
+            "OPERATIVE",
+            "INFILTRATOR",
+            "DUELIST"
+        ],
+        "MAGE": [
+            "NO CALLING",
+            "SPELLBLADE",
+            "MYSTIC",
+            "WARLOCK"
+        ]
+    },
+    "generalAbilities": [
+        {
+            "name": "Concussion",
+            "type": "active",
+            "exp": "On a successful hit, cause your target to roll with a -2 to all their attack and defense rolls for one round.",
+            "cost": "1 SP",
+            "req": "1 Fortitude"
+        },
+        {
+            "name": "Rejuvenation Expert",
+            "type": "active",
+            "exp": "Restore 1 MP or 1 SP to an ally. Your target also gains +1 attack for one round.",
+            "cost": "1 MP or 1 SP",
+            "req": "1 Judgement"
+        },
+        {
+            "name": "Magickal Healer",
+            "type": "active",
+            "exp": "Heal one ally for 2 HP or revive a single ally from 0 HP to 1 HP.",
+            "cost": "1 MP",
+            "req": "1 Judgement"
+        },
+        {
+            "name": "Debilitating Strike",
+            "type": "active",
+            "exp": "On your successful attack hit, the target cannot use an Active or Reactive cost ability until the beginning of your next turn that uses only the resource you spent on this ability. Your target is then limited to abilities that use the resource not spent for this use of Debilitating Strike or abilities that use both SP and MP. Holy items, Mundus effects, Passives and Basic Attacks are otherwise unaffected by Debilitating Strike.",
+            "cost": "1 SP or 1 MP",
+            "req": "1 Cunning"
+        },
+        {
+            "name": "Staggering Blow",
+            "type": "active",
+            "exp": "On a successful hit, -1 damage to your target’s attacks next round.",
+            "cost": "1 SP",
+            "req": "1 Fortitude, 1 Cunning"
+        },
+        {
+            "name": "Magical Accuracy",
+            "type": "active",
+            "exp": "Gain +3 attack this turn.",
+            "cost": "1 MP",
+            "req": "ANY"
+        },
+        {
+            "name": "Keen Accuracy",
+            "type": "active",
+            "exp": "Gain +3 attack this turn.",
+            "cost": "1 SP",
+            "req": "ANY"
+        },
+        {
+            "name": "Magical Defense",
+            "type": "active",
+            "exp": "Gain +3 to defense rolls for one round.",
+            "cost": "1 MP",
+            "req": "ANY"
+        },
+        {
+            "name": "Keen Defense",
+            "type": "active",
+            "exp": "Gain +3 to defense rolls for one round.",
+            "cost": "1 SP",
+            "req": "ANY"
+        },
+        {
+            "name": "Magical Damage",
+            "type": "active",
+            "exp": "Gain +1 damage this turn.",
+            "cost": "1 MP",
+            "req": "ANY"
+        },
+        {
+            "name": "Keen Damage",
+            "type": "active",
+            "exp": "Gain +1 damage this turn.",
+            "cost": "1 SP",
+            "req": "ANY"
+        },
+        {
+            "name": "Bodyguard",
+            "type": "reactive",
+            "exp": "When a friendly member is targeted by an attack, make yourself the target in their place. You gain +2 defense for the turn. This must be declared after someone is named a target, and before their defense rolls.",
+            "cost": "1 SP",
+            "req": "1 Fortitude"
+        },
+        {
+            "name": "Divines Light",
+            "type": "reactive",
+            "exp": "On a successful hit, heal one friendly target for 2 HP or heal two friendly targets for 1 HP each.",
+            "cost": "1 MP",
+            "req": "1 Fortitude, 1 Judgement"
+        },
+        {
+            "name": "Intervention",
+            "type": "reactive",
+            "exp": "Reduce the damage a target receives from a hit or ability by 1. The target that you negated damage for also receives +2 attack for one round.",
+            "cost": "1 MP",
+            "req": "2 Judgement"
+        },
+        {
+            "name": "Tactical Retreat",
+            "type": "reactive",
+            "exp": "Reroll your defense rolls this turn with a maximum bonus of d20 + Participation. You must keep the new rolls. Holy and Mundus effects do not activate on the reroll from this ability.",
+            "cost": "1 SP or 1 MP",
+            "req": "2 Cunning"
+        },
+        {
+            "name": "Grit",
+            "type": "passive",
+            "exp": "Gain +1 defense for every HP you are currently missing (max +4 from this ability). While at max HP you gain +1 to attack and defense. This bonus does not stack with Blur.",
+            "cost": "N/A",
+            "req": "2 Fortitude"
+        },
+        {
+            "name": "Blur",
+            "type": "passive",
+            "exp": "When spending SP and/or MP gain +3 defense for a full round. This bonus does not stack with Grit.",
+            "cost": "N/A",
+            "req": "1 Cunning, 1 Judgement"
+        },
+        {
+            "name": "Foresight",
+            "type": "passive",
+            "exp": "On a successful attack hit, gain a stacking +2 attack (max +4 from this ability). On a missed attack, lose one stack of Foresight once per turn. The first attack target of your Declare determines if you gain or lose the bonus for the next round if used with an ability that selects multiple targets.",
+            "cost": "N/A",
+            "req": "1 Cunning"
+        },
+        {
+            "name": "Opportunist",
+            "type": "passive",
+            "exp": "Gain +4 attack against a target on your next turn if you have defended against ALL of their attacks. If you are not targeted by any attacks since your last turn OR you go before your enemy on the first round, gain a +2 attack. Gain a +4 to initiative.",
+            "cost": "N/A",
+            "req": "2 Cunning, 1 Fortitude"
+        },
+        {
+            "name": "Combat Accuracy",
+            "type": "passive",
+            "exp": "Gain a +2 to all attack rolls.",
+            "cost": "N/A",
+            "req": "ANY"
+        },
+        {
+            "name": "Defensive Stance",
+            "type": "passive",
+            "exp": "Gain a +2 to all defense rolls.",
+            "cost": "N/A",
+            "req": "ANY"
+        }
+    ],
+    "callingAbilities": [
+        {
+            "name": "Wall of Steel",
+            "type": "reactive",
+            "exp": "1 SP: Reduce damage up to three targets receive from a hit or ability by 1 each. OR 2 SP: Reduce damage a target receives from a hit or ability by 2. The target that you reduced damage for also receives +4 defense for one round.",
+            "cost": "1 SP OR 2 SP",
+            "req": "Knight"
+        },
+        {
+            "name": "Divine Fury",
+            "type": "active",
+            "exp": "1 SP: Gain +1 damage and gain a bonus to attack equal to your missing HP. Additionally, you may choose to spend 1 HP. If you do, gain an additional +1 damage but you cannot be healed (except by Forge abilities) until the start of your next turn. OR 2 SP: Select up to 3 targets for your attack. Gain a bonus to attack on this turn equal to 1/2 your missing HP rounded up. Holy and Mundus activations only activate on the first target of your Declare.",
+            "cost": "1 SP OR 2 SP",
+            "req": "Zealot"
+        },
+        {
+            "name": "Resolute Smite",
+            "type": "active",
+            "exp": "1 SP: Gain +2 damage this turn. OR 2 SP: Gain +3 damage and +1 attack this turn.",
+            "cost": "1 SP OR 2 SP",
+            "req": "Crusader"
+        },
+        {
+            "name": "Tricks of the Trade",
+            "type": "reactive",
+            "exp": "1 SP & 1 MP: After your successful hit, your target then takes 1 direct damage. Also select HP, SP, or MP. Your target also loses 1 point of the resource you chose and a friendly target of your choosing gains 1 point of that resource. OR 1 SP & 1 MP: On a successful hit, select HP, SP, or MP. Distribute 4 of the chosen resource split amongst up to 4 friendly targets as you choose.",
+            "cost": "1 SP and 1 MP OR 1 SP and 1 MP",
+            "req": "Operative"
+        },
+        {
+            "name": "Tactician",
+            "type": "active",
+            "exp": "1 SP: Give a friendly target a +6 to their attack this turn. OR 1 SP & 1 MP: Mark a target enemy giving all friendlies a +4 attack against the target for one round.",
+            "cost": "1 SP OR 1 SP and 1 MP",
+            "req": "Infiltrator"
+        },
+        {
+            "name": "Quick Strike",
+            "type": "active",
+            "exp": "1 MP: Gain +2 attack and +1 damage this turn. OR 1 SP & 1 MP: Select up to 3 targets for your attack. A target hit by this attack suffers -2 attack until your next turn. Holy and Mundus activations only activate on the first target of your Declare.",
+            "cost": "1 MP OR 1 SP and 1 MP",
+            "req": "Duelist"
+        },
+        {
+            "name": "Enchanted Weapon",
+            "type": "reactive",
+            "exp": "1 MP: After your successful hit, deal 1 direct damage and 1 irreducible direct damage to your target. OR 2 MP: After your successful hit, deal 1 direct damage and 1 irreducible direct damage to your target. Gain +3 defense for one round.",
+            "cost": "1 MP OR 2 MP",
+            "req": "Spellblade"
+        },
+        {
+            "name": "Mara’s Touch",
+            "type": "active",
+            "exp": "1 MP: Restore 1 HP each to up to 3 separate targets. OR 2 MP: Restore 5 HP split among friendly targets as you choose. You may choose to use 3 HP of this heal to revive a friendly target from 0 to 1 HP, and may also heal that target with any remaining heal.",
+            "cost": "1 MP OR 2 MP",
+            "req": "Mystic"
+        },
+        {
+            "name": "Elemental Barrage",
+            "type": "active",
+            "exp": "1 MP: Gain +2 damage. OR 2 MP: Select up to 3 targets for your attack. Increase your attack roll by +2. Holy and Mundus activations only activate on the first target of your Declare.",
+            "cost": "1 MP OR 2 MP",
+            "req": "Warlock"
+        }
+    ],
+    "mundusEffects": [
+        {
+            "name": "The Warrior",
+            "effect": "Gain +2 to your maximum SP."
+        },
+        {
+            "name": "The Lord",
+            "effect": "Gain +1 to your maximum HP."
+        },
+        {
+            "name": "The Lady",
+            "effect": "Your holy artifact procs on its assigned number and next highest number. If the Holy number is 20, then your holy artifact procs on a 19 as well as a 20 instead. This effect can only be applied to the first defense roll in a turn."
+        },
+        {
+            "name": "The Steed",
+            "effect": "Gain +4 to initiative and +1 defense."
+        },
+        {
+            "name": "The Mage",
+            "effect": "Gain +2 to your maximum MP."
+        },
+        {
+            "name": "The Apprentice",
+            "effect": "When spending MP with an active ability, gain +1 damage. If used with an ability with multiple attack targets, it only affects the first target."
+        },
+        {
+            "name": "The Atronach",
+            "effect": "On a successful hit restore +1 MP, max once per turn."
+        },
+        {
+            "name": "The Ritual",
+            "effect": "Upon a successful defense you may heal a friendly target for +1 HP. This passive can only be used once per turn."
+        },
+        {
+            "name": "The Thief",
+            "effect": "Gain +1 to your maximum SP and MP."
+        },
+        {
+            "name": "The Shadow",
+            "effect": "Your holy artifact procs on its assigned number and next highest number. If the Holy number is 20, then your holy artifact procs on a 19 as well as a 20 instead. This effect can only be applied to the first attack roll in a turn."
+        },
+        {
+            "name": "The Lover",
+            "effect": "Gain +1 to all attack rolls and the first point of damage from your successful attack hit is irreducible."
+        },
+        {
+            "name": "The Tower",
+            "effect": "When spending SP with an active ability, gain +1 damage. If used with an ability with multiple attack targets, it only affects the first target."
+        },
+        {
+            "name": "The Serpent",
+            "effect": "On a successful hit restore +1 SP, max once per turn."
+        }
+    ],
+    "forgeEffects": [
+        {
+            "name": "SMITE",
+            "effect": "Deal 1 irreducible direct damage.",
+            "proc": "a"
+        },
+        {
+            "name": "HINDER",
+            "effect": "-4 to your target's next attack roll",
+            "proc": "a"
+        },
+        {
+            "name": "SLOW",
+            "effect": "-4 to your target's next defense roll",
+            "proc": "a"
+        },
+        {
+            "name": "BURN",
+            "effect": "Deal 1 direct damage immediately. If this first point of damage is not reduced, deal an additional 1 direct damage to the same target at the start of your next turn.",
+            "proc": "a"
+        },
+        {
+            "name": "INSPIRE",
+            "effect": "Gain +4 to your current rolled attack",
+            "proc": "a"
+        },
+        {
+            "name": "PROTECT",
+            "effect": "Gain +4 to your current rolled defense",
+            "proc": "d"
+        },
+        {
+            "name": "HEAL",
+            "effect": "Heal yourself for 2 HP (may not exceed your current HP cap)",
+            "proc": "a"
+        },
+        {
+            "name": "REVEAL",
+            "effect": "Reroll your current attack roll",
+            "proc": "a"
+        },
+        {
+            "name": "DODGE",
+            "effect": "Reroll your current defense roll",
+            "proc": "d"
+        },
+        {
+            "name": "WARD",
+            "effect": "Grant +1 stackable Ward on yourself",
+            "proc": "d"
+        },
+        {
+            "name": "SILENCE",
+            "effect": "Your attack target cannot use or benefit from any of their abilities (actives, reactives, or passives) until your next turn. They are only able to roll a d20+Participation.",
+            "proc": "a"
+        },
+        {
+            "name": "VICIOUS",
+            "effect": "Deal 2 direct damage, then you take 1 irreducible direct damage.",
+            "proc": "a"
+        },
+        {
+            "name": "GLORIOUS",
+            "effect": "Restore +1 HP to friendly target that has HP missing.",
+            "proc": "d"
+        },
+        {
+            "name": "COUNTER",
+            "effect": "Deal 1 irreducible direct damage.",
+            "proc": "d"
+        }
+    ]
+}

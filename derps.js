@@ -1,4 +1,22 @@
-function clickProcess(e) {
+async function copyTextToClipboard(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        console.log('Text copied to clipboard');
+    } catch (err) {
+        console.error('Failed to copy text: ', err);
+    }
+}
+
+async function fetchAndParseJSON() {
+    try {
+        const response = await fetch('./dynamicData.json');
+        return await response.json();
+    } catch (err) {
+        console.error('Error fetching and parsing JSON: ', err);
+    }
+}
+
+async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById("form");
     let fields = Array.from(form.elements).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
@@ -89,7 +107,7 @@ Points Earned = ${fields['vp']}
     textarea.value = md;
     textarea.select();
     textarea.setSelectionRange(0, textarea.value.length);
-    document.execCommand('copy');
+    await copyTextToClipboard(textarea.value);
     const copyMessage = document.getElementById('copyMessage');
     copyMessage.style.display = 'block';
     setTimeout(() => {
