@@ -1,4 +1,4 @@
-async function copyTextToClipboard(text) {
+export async function copyTextToClipboard(text) {
     try {
         await navigator.clipboard.writeText(text);
         console.log('Text copied to clipboard');
@@ -7,7 +7,7 @@ async function copyTextToClipboard(text) {
     }
 }
 
-async function fetchAndParseJSON() {
+export async function fetchAndParseJSON() {
     try {
         const response = await fetch('./dynamicData.json');
         return await response.json();
@@ -16,7 +16,7 @@ async function fetchAndParseJSON() {
     }
 }
 
-async function handleSubmit(e) {
+export async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById("form");
     let fields = Array.from(form.elements).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
