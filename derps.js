@@ -1,4 +1,4 @@
-export async function copyTextToClipboard(text) {
+async function copyTextToClipboard(text) {
     try {
         await navigator.clipboard.writeText(text);
         console.log('Text copied to clipboard');
@@ -7,7 +7,7 @@ export async function copyTextToClipboard(text) {
     }
 }
 
-export async function fetchAndParseJSON() {
+async function fetchAndParseJSON() {
     try {
         const response = await fetch('./dynamicData.json');
         return await response.json();
@@ -16,7 +16,7 @@ export async function fetchAndParseJSON() {
     }
 }
 
-export async function handleSubmit(e) {
+async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById("form");
     let fields = Array.from(form.elements).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
@@ -114,3 +114,5 @@ Points Earned = ${fields['vp']}
         copyMessage.style.display = 'none';
     }, 10000);
 };
+
+export { handleSubmit, fetchAndParseJSON };
