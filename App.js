@@ -38,9 +38,9 @@ function filterAbilities(index, abilityCount, dynData) {
     }
 }
 
-function calculateStats (path, dynData) {
+function calculateStats(path, dynData) {
 
-    if(!dynData){
+    if (!dynData) {
         console.log("Not running calculateStats because dynData is undefined");
         return;
     }
@@ -67,10 +67,10 @@ function calculateStats (path, dynData) {
         hp.value = pathBaseStats.HP + hpBonus;
         sp.value = pathBaseStats.SP + spBonus;
         mp.value = pathBaseStats.MP + mpBonus;
-    } 
+    }
 }
 
-function PathOptions ({dynData}) {
+function PathOptions({ dynData }) {
     console.log("PathOptions called");
 
     if (!dynData) {
@@ -84,7 +84,7 @@ function PathOptions ({dynData}) {
     return html`${generateOptions()}`;
 };
 
-function ForgeEffectNames ({dynData}) {
+function ForgeEffectNames({ dynData }) {
     console.log("ForgeEffectNames called");
 
     if (!dynData) {
@@ -94,7 +94,7 @@ function ForgeEffectNames ({dynData}) {
     return dynData.forgeEffects.map(effect => html`<option value="${effect.name}">${effect.name}</option>`);
 };
 
-function MundusStoneNames ({dynData}) {
+function MundusStoneNames({ dynData }) {
     console.log("MundusStoneNames called");
 
     if (!dynData) {
@@ -104,7 +104,7 @@ function MundusStoneNames ({dynData}) {
     return dynData.mundusEffects.map(stone => html`<option value="${stone.name}">${stone.name}</option>`);
 };
 
-function TableRows ({abilityCount, dynData}) {
+function TableRows({ abilityCount, dynData }) {
     console.log("TableRow called");
 
     let retval = [];
@@ -115,26 +115,26 @@ function TableRows ({abilityCount, dynData}) {
 
     const calling = document.getElementById('calling')?.value ?? undefined;
 
-    for(let index = 1; index <= abilityCount; index++) {
+    for (let index = 1; index <= abilityCount; index++) {
         const filteredAbilities = filterAbilities(index, abilityCount, dynData);
         retval.push(html`
-            <tr>
-                <td>
+            <div class="row">
+                <div class="column column-25">
                     <select style="max-width: 400px;" id="ability${index}" name="ability${index}" onChange=${(event) => onAbilityChange(event, index, dynData)}>
                         
                     </select>
-                </td>
-                <td><input type="text" placeholder="Explanation" name="exp${index}" id="exp${index}" readonly /></td>
-                <td><input type="text" placeholder="Cost" name="cost${index}" id="cost${index}" readonly /></td>
-                <td><input type="text" placeholder="Requirement" name="req${index}" id="req${index}" readonly /></td>
-            </tr>
+                </div>
+                <div class="column column-50"><input type="text" placeholder="Explanation" name="exp${index}" id="exp${index}" readonly /></div>
+                <div class="column column-10"><input type="text" placeholder="Cost" name="cost${index}" id="cost${index}" readonly /></div>
+                <div class="column column-20"><input type="text" placeholder="Requirement" name="req${index}" id="req${index}" readonly /></div>
+            </div>
         `);
     }
 
     return html`<tbody>${retval}</tbody>`;
 };
 
-function onForgeChange (event, dynData) {
+function onForgeChange(event, dynData) {
     console.log("onForgeChange called");
 
     if (!dynData) {
@@ -150,7 +150,7 @@ function onForgeChange (event, dynData) {
     }
 };
 
-function onPathChange (event, abilityCount, dynData) {
+function onPathChange(event, abilityCount, dynData) {
     console.log("onPathChange called with event.target.value = " + event.target.value);
 
     if (!dynData) {
@@ -175,12 +175,12 @@ function onPathChange (event, abilityCount, dynData) {
     onVirtuePointChange(abilityCount, dynData);
 };
 
-function onParagonChange (dynData) {
+function onParagonChange(dynData) {
     console.log("onParagonChange called");
     calculateStats(document.getElementById('path').value, dynData);
 }
 
-function onMundusChange (event, dynData) {
+function onMundusChange(event, dynData) {
     console.log("onMundusChange called");
     const selectedStone = dynData.mundusEffects.find(stone => stone.name === event.target.value);
 
@@ -192,7 +192,7 @@ function onMundusChange (event, dynData) {
     calculateStats(document.getElementById('path').value, dynData);
 };
 
-function onAbilityChange (event, index, dynData) {
+function onAbilityChange(event, index, dynData) {
     console.log("onAbilityChange called")
     const selectedAbility = dynData.callingAbilities.concat(dynData.generalAbilities).find(ability => ability.name === event.target.value);
 
@@ -222,7 +222,7 @@ function recalculateVp(dynData) {
     console.log(`pathCallings = ${pathCallings}, validCallings = ${validCallings}`);
     const paladin = document.getElementById('paladin').checked;
     const prior = document.getElementById('prior').checked;
-    const totalVp = 
+    const totalVp =
         (validPaths.includes(path) ? 2 : 0)
         + (prior ? 1 : 0)
         + (paladin ? 1 : 0)
@@ -269,7 +269,7 @@ function onVirtuePointChange(abilityCount, dynData) {
     let fv = parseInt(fort.value);
     let cv = parseInt(cun.value);
     let jv = parseInt(jud.value);
-    while(fv + cv + jv > totalVp) {
+    while (fv + cv + jv > totalVp) {
         if (fv > 0) {
             fv--;
         } else if (cv > 0) {
@@ -299,7 +299,7 @@ function recalcAbilities(abilityCount, dynData) {
     const calling = document.getElementById('calling').value;
     const path = document.getElementById('path').value;
 
-    for(let index = 1; index <= abilityCount; index++) {
+    for (let index = 1; index <= abilityCount; index++) {
         const filteredAbilities = filterAbilities(index, abilityCount, dynData);
         const selectedAbility = document.getElementById(`ability${index}`).value;
 
@@ -319,7 +319,7 @@ function recalcAbilities(abilityCount, dynData) {
         }
         else {
             document.getElementById(`ability${index}`).value = "N/A";
-            onAbilityChange({"target": { "value": "N/A"}}, index, dynData);
+            onAbilityChange({ "target": { "value": "N/A" } }, index, dynData);
         }
     }
 }
@@ -349,143 +349,200 @@ function App() {
     useEffect(() => {
         const path = document.getElementById('path').value;
         console.log("recalculating useEffect called with path = " + path);
-        onPathChange({"target": { "value": path}}, abilityCount, dynData);
-        onCallingChange({"target": {"value": document.getElementById('calling').value}}, abilityCount, dynData);
-        onMundusChange({"target": { "value": document.getElementById('msname').value}}, dynData);
-        onForgeChange({"target": { "value": document.getElementById('fheffect').value}}, dynData);
+        onPathChange({ "target": { "value": path } }, abilityCount, dynData);
+        onCallingChange({ "target": { "value": document.getElementById('calling').value } }, abilityCount, dynData);
+        onMundusChange({ "target": { "value": document.getElementById('msname').value } }, dynData);
+        onForgeChange({ "target": { "value": document.getElementById('fheffect').value } }, dynData);
         onParagonChange(dynData);
     }, []);
 
     return (html`
-    <div>
-    <div style="width: 75%">
-        <h1>─────DERPS Character Sheet Builder─────</h1>
-        <form autocomplete="on" id="form">
-            <label for="charName">Character Name:</label>
-            <input style="width: 50%; max-width: 300px;" type="text" placeholder="Character Name" name="charName" />
+<div>
+    <form autocomplete="on" id="form">
+        <div class="container">
+            <div class="row">
+                <h1>─────DERPS Character Sheet Builder─────</h1>
+            </div>
+            <div class="row">
+                <label for="charName">Character Name:</label>
+            </div>
+            <div class="row">
+                <input type="text" placeholder="Character Name" name="charName" />
+            </div>
 
-            <label for="quote">Your Character's Quote:</label>
-            <input type="text" placeholder="Quote" name="quote" />
+            <div class="row">
+                <label for="quote">Your Character's Quote:</label>
+            </div>
+            <div class="row">
+                <input type="text" placeholder="Quote" name="quote" />
+            </div>
 
-            <label for="path">Path:</label>
-            <h2><select style="width: 50%; max-width: 300px;" name="path" id="path" onChange=${(event) => onPathChange(event, abilityCount, dynData)}>
-                <${PathOptions} dynData=${dynData}/>
-            </select></h2>
+            <div class="row">
+                <label for="path">Path:</label>
+            </div>
+            <div class="row">
+                <select name="path" id="path" onChange=${(event) => onPathChange(event, abilityCount, dynData)}>
+                    <${PathOptions} dynData=${dynData} />
+                </select>
+            </div>
 
-            <label for="writ">Your Character's Writ of Ascension:</label>
-            <h2><input type="text" placeholder="Writ of Ascension" name="writ" /></h2>
+            <div class="row">
+                <label for="writ">Your Character's Writ of Ascension:</label>
+            </div>
+            <div class="row">
+                <h2><input type="text" placeholder="Writ of Ascension" name="writ" /></h2>
+            </div>
+        </div>
 
-            <h1>ARENA STATS ──────────</h1>
-            <table>
-                <tr>
-                    <td>HP:</td>
-                    <td><input type="number" id="hp" name="hp" min="6" max="8" value="6" readonly /></td>
-                    <td>SP:</td>
-                    <td><input type="number" id="sp" name="sp" min="0" max="9" value="0" readonly /></td>
-                    <td>MP:</td>
-                    <td><input type="number" id="mp" name="mp" min="0" max="9" value="0" readonly /></td>
-                </tr>
-                <tr>
-                    <td>Calling:</td>
-                    <td><select name="calling" id="calling" value="NO CALLING" onChange=${(event) => onCallingChange(event, abilityCount, dynData)}>
-                    </select></td>
-                    <td>Paragon Bonus:</td>
-                    <td><select name="paragon" id="paragon" value="N/A" onChange=${() => onParagonChange(dynData)}>
+        <div class="container">
+            <div class="row">
+                <h1>ARENA STATS ──────────</h1>
+            </div>
+            <div class="row">
+                <div class="column column-10">HP:</div>
+                <div class="column column-25"><input type="number" id="hp" name="hp" min="6" max="8" value="6" readonly /></div>
+                <div class="column column-10">SP:</div>
+                <div class="column column-25"><input type="number" id="sp" name="sp" min="0" max="9" value="0" readonly /></div>
+                <div class="column column-10">MP:</div>
+                <div class="column column-25"><input type="number" id="mp" name="mp" min="0" max="9" value="0" readonly /></div>
+            </div>
+            <div class="row">
+                <div class="column column-10">Calling:</div>
+                <div class="column column-25">
+                    <select name="calling" id="calling" value="NO CALLING" onChange=${(event) => onCallingChange(event, abilityCount, dynData)}>
+                    </select>
+                </div>
+                <div class="column column-10">Paragon Bonus:</div>
+                <div class="column column-25">
+                    <select name="paragon" id="paragon" value="N/A" onChange=${() => onParagonChange(dynData)}>
                         <option value="N/A">N/A</option>
                         <option value="+1 HP">+1 HP</option>
                         <option value="+1 SP">+1 SP</option>
                         <option value="+1 MP">+1 MP</option>
-                    </select></td>
-                    <td>League Passive:</td>
-                    <td><input type="number" name="league" min="0" max="2" value="0" /></td>
-                </tr>
-            </table>
+                    </select>
+                </div>
+                <div class="column column-10">League Passive:</div>
+                <div class="column column-25"><input type="number" name="league" min="0" max="2" value="0" /></div>
+            </div>
+        </div>
 
-            <h1>VIRTUE POINTS ──────────</h1>
-            <label for="vp">Points Earned =</label><input style="width: 50%; max-width: 300px;" readonly type="number" id="vp" name="vp" min="0" max="5" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
-            <label for="prior">Are you at least a Prior in the Clergy?</label><input type="checkbox" id="prior" name="prior" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
-            <label for="paladin">Are you at least a Paladin?</label><input type="checkbox" id="paladin" name="paladin" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
-            <h3>Virtue Point Assignments</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Virtue</th>
-                        <th>GIVES Bonus</th>
-                        <th>Virtue Points</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>Fortitude:</td>
-                    <td><input type="number" style="width: 50%;" name="fortgive" min="0" max="1" value="0" /></td>
-                    <td><input type="number" style="width: 50%;" id="fort" name="fort" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)}/></td>
-                </tr>
-                <tr>
-                    <td>Cunning:</td>
-                    <td><input type="number" style="width: 50%;" name="cungive" min="0" max="1" value="0" /></td>
-                    <td><input type="number" style="width: 50%;" id="cun" name="cun" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)}/></td>
-                </tr>
-                <tr>
-                    <td>Judgement:</td>
-                    <td><input type="number" style="width: 50%;" name="judgive" min="0" max="1" value="0" /></td>
-                    <td><input type="number" style="width: 50%;" id="jud" name="jud" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)}/></td>
-                </tr>
-            </table>
+        <div class="container">
+            <div class="row">
+                <h1>VIRTUE POINTS ──────────</h1>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <label for="vp">Points Earned =</label>
+                    <input style="width: 50%; max-width: 300px;" readonly type="number" id="vp" name="vp" min="0" max="5" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
+                </div>
+                <div class="column">
+                    <label for="prior">Are you at least a Prior in the Clergy?</label>
+                    <input type="checkbox" id="prior" name="prior" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
+                </div>
+                <div class="column">
+                    <label for="paladin">Are you at least a Paladin?</label>
+                    <input type="checkbox" id="paladin" name="paladin" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
+                </div>
+            </div>
+        </div>
 
-            <h1>ARSENAL ──────────</h1>
-            <table>
-                <${TableRows} abilityCount=${abilityCount} dynData=${dynData} />
-            </table>
-             
-            <h1>FORGE OF HOPE ITEM ──────────</h1>
-            <table>
-                <tr>
-                
-                    <td>ITEM TYPE:</td>
-                    <td><input type="text" name="fhitem" /></td>
-                    <td>CUSTOM ITEM NAME:</td>
-                    <td><input type="text" name="fhname" /></td>
-                    <td>EFFECT:</td>
-                    
-                    <td><select id="fheffect" name="fheffect" onChange=${(event) => onForgeChange(event, dynData)} >
+        <div class="container">
+            <div class="row">
+                <h2>Virtue Point Assignments</h2>
+            </div>
+            <div class="row">
+                <div class="column"><strong>Virtue</strong></div>
+                <div class="column"><strong>GIVES Bonus</strong></div>
+                <div class="column"><strong>Virtue Points</strong></div>
+            </div>
+            <div class="row">
+                <div class="column">Fortitude:</div>
+                <div class="column"><input type="number" name="fortgive" min="0" max="1" value="0" /></div>
+                <div class="column"><input type="number" id="fort" name="fort" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
+            </div>
+            <div class="row">
+                <div class="column">Cunning:</div>
+                <div class="column"><input type="number" name="cungive" min="0" max="1" value="0" /></div>
+                <div class="column"><input type="number" id="cun" name="cun" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
+            </div>
+            <div class="row">
+                <div class="column">Judgement:</div>
+                <div class="column"><input type="number" name="judgive" min="0" max="1" value="0" /></div>
+                <div class="column"><input type="number" id="jud" name="jud" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h1>ARSENAL ──────────</h1>
+            </div>
+            <${TableRows} abilityCount=${abilityCount} dynData=${dynData} />
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h1>FORGE OF HOPE ITEM ──────────</h1>
+            </div>
+            <div class="row">
+                <div class="column column-10">ITEM TYPE:</div>
+                <div class="column"><input type="text" name="fhitem" /></div>
+                <div class="column column-20">CUSTOM ITEM NAME:</div>
+                <div class="column"><input type="text" name="fhname" /></div>
+            </div>
+            <div class="row">
+                <div class="column column-10">EFFECT:</div>
+                <div class="column">
+                    <select id="fheffect" name="fheffect" onChange=${(event) => onForgeChange(event, dynData)} >
                         <${ForgeEffectNames} dynData=${dynData} />
                     </select>
-                
-                    </td>
-                    
-                    <td>HOLY NUM:</td>
-                    <td><input type="number" min="1" max="20" value="" name="fhholy" /></td>
-                    <td>A/D:</td>
-                    <td><input type="text" readonly id="fhad" name="fhad" /></td>
-                    
-                </tr>
-                
-            </table>
-            
-            <h1>MUNDUS STONE ──────────</h1>
-            <table>
-                <tr>
-                    <td>NAME:</td>
-                    <td><select id="msname" name="msname" onChange=${(event) => onMundusChange(event, dynData)} >
+                </div>
+                <div class="column column-10">HOLY NUM:</div>
+                <div class="column"><input type="number" min="1" max="20" value="" name="fhholy" /></div>
+                <div class="column column-10">A/D:</div>
+                <div class="column"><input type="text" readonly id="fhad" name="fhad" /></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h1>MUNDUS STONE ──────────</h1>
+            </div>
+            <div class="row">
+                <div class="column column-10">NAME:</div>
+                <div class="column column-25">
+                    <select id="msname" name="msname" onChange=${(event) => onMundusChange(event, dynData)} >
                         <${MundusStoneNames} dynData=${dynData} />
-                    </select></td>
-                    <td>PASSIVE EFFECT:</td>
-                    <td><input type="text" readonly id="mseffect" name="mseffect" /></td>
-                    <td>OVERSEER :</td>
-                    <td><input type="text" id="msoverseer" name="msoverseer" /></td>
-                    <td>DATE:</td>
-                    <td><input type="date" id="msdate" name="msdate" /></td>
-                </tr>
-            </table>
-            
-            <input onClick=${(event) => handleSubmit(event)} type="button" class="button" value="Process"></input>
-            
-        </form>
+                    </select>
+                </div>
+                <div class="column column-10">PASSIVE EFFECT:</div>
+                <div class="column"><input type="text" readonly id="mseffect" name="mseffect" /></div>
+            </div>
+            <div class="row">
+                <div class="column">OVERSEER :</div>
+                <div class="column"><input type="text" id="msoverseer" name="msoverseer" /></div>
+                <div class="column">DATE:</div>
+                <div class="column"><input type="date" id="msdate" name="msdate" /></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                    <input onClick=${(event) => handleSubmit(event)} type="button" class="button" value="Process"></input>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <div id="copyMessage">Copied to clipboard!</div>
+                <label for="output">Output Markdown</label>
+                <textarea readonly name="output" id="output"></textarea>
+            </div>
+        </div>
     </div>
-    <div style="position: relative; margin-right: auto;">
-        <div id="copyMessage">Copied to clipboard!</div>
-        <label for="output">Output Markdown</label>
-        <textarea readonly style="width: 90%; height: 500px;" name="output" id="output"></textarea>
-    </div> 
 </div>
 `);
 }
