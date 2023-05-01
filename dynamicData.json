@@ -1,10 +1,29 @@
 {
-    "paths": [
-        "NO PATH",
-        "WARRIOR",
-        "ROGUE",
-        "MAGE"
-    ],
+    "paths": {
+        "NO PATH": {
+            "HP": 6,
+            "SP": 0,
+            "MP": 0
+        },
+        "WARRIOR": {
+            "HP": 6,
+            "SP": 6,
+            "MP": 2,
+            "virtue": "2 FORT"
+        },
+        "ROGUE": {
+            "HP": 6,
+            "SP": 4,
+            "MP": 4,
+            "virtue": "2 CUN"
+        },
+        "MAGE": {
+            "HP": 6,
+            "SP": 2,
+            "MP": 6,
+            "virtue": "2 JUD"
+        }
+    },
     "callings": {
         "NO PATH": [
             "NO CALLING"
@@ -29,6 +48,13 @@
         ]
     },
     "generalAbilities": [
+        {
+            "name": "N/A",
+            "type": "N/A",
+            "exp": "",
+            "cost": "",
+            "req": ""
+        },
         {
             "name": "Concussion",
             "type": "active",
@@ -179,6 +205,13 @@
     ],
     "callingAbilities": [
         {
+            "name": "N/A",
+            "type": "N/A",
+            "exp": "",
+            "cost": "",
+            "req": ""
+        },
+        {
             "name": "Wall of Steel",
             "type": "reactive",
             "exp": "1 SP: Reduce damage up to three targets receive from a hit or ability by 1 each. OR 2 SP: Reduce damage a target receives from a hit or ability by 2. The target that you reduced damage for also receives +4 defense for one round.",
@@ -244,12 +277,22 @@
     ],
     "mundusEffects": [
         {
+            "name": "N/A",
+            "effect": ""
+        },
+        {
             "name": "The Warrior",
-            "effect": "Gain +2 to your maximum SP."
+            "effect": "Gain +2 to your maximum SP.",
+            "codeEffect": {
+                "SP": 2
+            }
         },
         {
             "name": "The Lord",
-            "effect": "Gain +1 to your maximum HP."
+            "effect": "Gain +1 to your maximum HP.",
+            "codeEffect": {
+                "HP": 1
+            }
         },
         {
             "name": "The Lady",
@@ -261,7 +304,10 @@
         },
         {
             "name": "The Mage",
-            "effect": "Gain +2 to your maximum MP."
+            "effect": "Gain +2 to your maximum MP.",
+            "codeEffect": {
+                "MP": 2
+            }
         },
         {
             "name": "The Apprentice",
@@ -277,7 +323,11 @@
         },
         {
             "name": "The Thief",
-            "effect": "Gain +1 to your maximum SP and MP."
+            "effect": "Gain +1 to your maximum SP and MP.",
+            "codeEffect": {
+                "SP": 1,
+                "MP": 1
+            }
         },
         {
             "name": "The Shadow",

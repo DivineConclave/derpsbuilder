@@ -9,7 +9,7 @@ async function copyTextToClipboard(text) {
 
 async function fetchAndParseJSON() {
     try {
-        const response = await fetch('./dynamicData.json');
+        const response = await fetch('dynamicData.json');
         return await response.json();
     } catch (err) {
         console.error('Error fetching and parsing JSON: ', err);
@@ -93,7 +93,7 @@ Points Earned = ${fields['vp']}
 # FORGE OF HOPE ITEM ──────────
 |ITEM|NAME|EFFECT|HOLY NUM|
 |---|---|---|---|
-|${fields['fhitem']}|${fields['fhname']}|${fields['fheffect']}|${fields['fhholy']}|
+|${fields['fhitem']}|${fields['fhname']}|${fields['fheffect']}|${fields['fhholy']}${fields['fhad']}|
 
 &#10;
 &#10;
