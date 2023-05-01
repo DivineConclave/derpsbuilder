@@ -117,21 +117,19 @@ function TableRows({ abilityCount, dynData }) {
 
     for (let index = 1; index <= abilityCount; index++) {
         const filteredAbilities = filterAbilities(index, abilityCount, dynData);
-        retval.push(html`
-            <div class="row">
-                <div class="column column-25">
-                    <select style="max-width: 400px;" id="ability${index}" name="ability${index}" onChange=${(event) => onAbilityChange(event, index, dynData)}>
-                        
-                    </select>
+        retval.push(html`    
+            <div class="row py-md-2">
+                <div class="col col-md-3">
+                    <select class="form-control" id="ability${index}" name="ability${index}" onChange=${(event) => onAbilityChange(event, index, dynData)}></select>
                 </div>
-                <div class="column column-50"><input type="text" placeholder="Explanation" name="exp${index}" id="exp${index}" readonly /></div>
-                <div class="column column-10"><input type="text" placeholder="Cost" name="cost${index}" id="cost${index}" readonly /></div>
-                <div class="column column-20"><input type="text" placeholder="Requirement" name="req${index}" id="req${index}" readonly /></div>
+                <div class="col col-sm-2"><input class="form-control" type="text" placeholder="Cost" name="cost${index}" id="cost${index}" readonly /></div>
+                <div class="col col-sm-2"><input class="form-control" type="text" placeholder="Requirement" name="req${index}" id="req${index}" readonly /></div>
+                <div class="col"><input class="form-control" type="text" placeholder="Explanation" name="exp${index}" id="exp${index}" readonly /></div>
             </div>
         `);
     }
 
-    return html`<tbody>${retval}</tbody>`;
+    return html`${retval}`;
 };
 
 function onForgeChange(event, dynData) {
@@ -360,189 +358,209 @@ function App() {
 <div>
     <form autocomplete="on" id="form">
         <div class="container">
-            <div class="row">
+            <div class="row py-lg-3">
                 <h1>─────DERPS Character Sheet Builder─────</h1>
             </div>
             <div class="row">
                 <label for="charName">Character Name:</label>
             </div>
             <div class="row">
-                <input type="text" placeholder="Character Name" name="charName" />
+                <div class="col-auto">
+                    <input class="form-control" type="text" placeholder="Character Name" name="charName" />
+                </div>
             </div>
+
+            <div class="row py-3"></div>
 
             <div class="row">
                 <label for="quote">Your Character's Quote:</label>
             </div>
             <div class="row">
-                <input type="text" placeholder="Quote" name="quote" />
+                <div class="col-auto">
+                    <textarea class="form-control" type="text" placeholder="Quote" name="quote" />
+                </div>
             </div>
+
+            <div class="row py-3"></div>
 
             <div class="row">
                 <label for="path">Path:</label>
             </div>
             <div class="row">
-                <select name="path" id="path" onChange=${(event) => onPathChange(event, abilityCount, dynData)}>
-                    <${PathOptions} dynData=${dynData} />
-                </select>
+                <div class="col-auto">
+                    <select class="form-control" name="path" id="path" onChange=${(event) => onPathChange(event, abilityCount, dynData)}>
+                        <${PathOptions} dynData=${dynData} />
+                    </select>
+                </div>
             </div>
+
+            <div class="row py-3"></div>
 
             <div class="row">
                 <label for="writ">Your Character's Writ of Ascension:</label>
             </div>
             <div class="row">
-                <h2><input type="text" placeholder="Writ of Ascension" name="writ" /></h2>
+                <div class="col-auto">
+                    <textarea class="form-control" type="text" placeholder="Writ of Ascension" name="writ" />
+                </div>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
+            <div class="row py-3"></div>
+
+            <div class="row py-2">
                 <h1>ARENA STATS ──────────</h1>
             </div>
-            <div class="row">
-                <div class="column column-10">HP:</div>
-                <div class="column column-25"><input type="number" id="hp" name="hp" min="6" max="8" value="6" readonly /></div>
-                <div class="column column-10">SP:</div>
-                <div class="column column-25"><input type="number" id="sp" name="sp" min="0" max="9" value="0" readonly /></div>
-                <div class="column column-10">MP:</div>
-                <div class="column column-25"><input type="number" id="mp" name="mp" min="0" max="9" value="0" readonly /></div>
+            <div class="row py-md-2">
+                <div class="col-auto">HP:</div>
+                <div class="col-auto"><input class="form-control" type="text" id="hp" name="hp" readonly /></div>
+                <div class="col-auto">SP:</div>
+                <div class="col-auto"><input class="form-control" type="text" id="sp" name="sp" readonly /></div>
+                <div class="col-auto">MP:</div>
+                <div class="col-auto"><input class="form-control" type="text" id="mp" name="mp" readonly /></div>
             </div>
-            <div class="row">
-                <div class="column column-10">Calling:</div>
-                <div class="column column-25">
-                    <select name="calling" id="calling" value="NO CALLING" onChange=${(event) => onCallingChange(event, abilityCount, dynData)}>
+            <div class="row py-md-2">
+                <div class="col-auto">Calling:</div>
+                <div class="col-auto">
+                    <select class="form-control" name="calling" id="calling" value="NO CALLING" onChange=${(event) => onCallingChange(event, abilityCount, dynData)}>
                     </select>
                 </div>
-                <div class="column column-10">Paragon Bonus:</div>
-                <div class="column column-25">
-                    <select name="paragon" id="paragon" value="N/A" onChange=${() => onParagonChange(dynData)}>
+            </div>
+            <div class="row py-md-2">
+                <div class="col-auto">Paragon Bonus:</div>
+                <div class="col-auto">
+                    <select class="form-control" name="paragon" id="paragon" value="N/A" onChange=${() => onParagonChange(dynData)}>
                         <option value="N/A">N/A</option>
                         <option value="+1 HP">+1 HP</option>
                         <option value="+1 SP">+1 SP</option>
                         <option value="+1 MP">+1 MP</option>
                     </select>
                 </div>
-                <div class="column column-10">League Passive:</div>
-                <div class="column column-25"><input type="number" name="league" min="0" max="2" value="0" /></div>
+                <div class="col-auto">League Passive:</div>
+                <div class="col-auto"><input class="form-control" type="number" name="league" min="0" max="2" value="0" /></div>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
+            <div class="row py-3"></div>
+
+            <div class="row py-2">
                 <h1>VIRTUE POINTS ──────────</h1>
             </div>
             <div class="row">
-                <div class="column">
-                    <label for="vp">Points Earned =</label>
-                    <input style="width: 50%; max-width: 300px;" readonly type="number" id="vp" name="vp" min="0" max="5" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
+                <div class="col-auto">
+                    <label for="vp">Points Earned:</label>
+                    <input class="form-control" readonly type="number" id="vp" name="vp" min="0" max="5" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
                 </div>
-                <div class="column">
+                <div class="col-auto p-2 border">
                     <label for="prior">Are you at least a Prior in the Clergy?</label>
-                    <input type="checkbox" id="prior" name="prior" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
+                    <input class="form-control" type="checkbox" id="prior" name="prior" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
                 </div>
-                <div class="column">
+                <div class="col-auto p-2 border">
                     <label for="paladin">Are you at least a Paladin?</label>
-                    <input type="checkbox" id="paladin" name="paladin" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
+                    <input class="form-control" type="checkbox" id="paladin" name="paladin" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} />
                 </div>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
+            <div class="row py-3"></div>
+
+            <div class="row py-2">
                 <h2>Virtue Point Assignments</h2>
             </div>
             <div class="row">
-                <div class="column"><strong>Virtue</strong></div>
-                <div class="column"><strong>GIVES Bonus</strong></div>
-                <div class="column"><strong>Virtue Points</strong></div>
+                <div class="col-auto">
+                    <div class="row py-md-2">
+                        <div class="col col-md-3"><strong>Virtue</strong></div>
+                        <div class="col col-md-3"><strong>GIVES Bonus</strong></div>
+                        <div class="col col-md-3"><strong>Virtue Points</strong></div>
+                    </div>
+                    <div class="row py-md-2">
+                        <div class="col col-md-3">Fortitude:</div>
+                        <div class="col col-md-3"><input class="form-control" type="number" name="fortgive" min="0" max="1" value="0" /></div>
+                        <div class="col col-md-3"><input class="form-control" type="number" id="fort" name="fort" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
+                    </div>
+                    <div class="row py-md-2">
+                        <div class="col col-md-3">Cunning:</div>
+                        <div class="col col-md-3"><input class="form-control" type="number" name="cungive" min="0" max="1" value="0" /></div>
+                        <div class="col col-md-3"><input class="form-control" type="number" id="cun" name="cun" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
+                    </div>
+                    <div class="row py-md-2">
+                        <div class="col col-md-3">Judgement:</div>
+                        <div class="col col-md-3"><input class="form-control" type="number" name="judgive" min="0" max="1" value="0" /></div>
+                        <div class="col col-md-3"><input class="form-control" type="number" id="jud" name="jud" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
+                    </div>
+                </div>
             </div>
-            <div class="row">
-                <div class="column">Fortitude:</div>
-                <div class="column"><input type="number" name="fortgive" min="0" max="1" value="0" /></div>
-                <div class="column"><input type="number" id="fort" name="fort" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
-            </div>
-            <div class="row">
-                <div class="column">Cunning:</div>
-                <div class="column"><input type="number" name="cungive" min="0" max="1" value="0" /></div>
-                <div class="column"><input type="number" id="cun" name="cun" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
-            </div>
-            <div class="row">
-                <div class="column">Judgement:</div>
-                <div class="column"><input type="number" name="judgive" min="0" max="1" value="0" /></div>
-                <div class="column"><input type="number" id="jud" name="jud" min="0" max="0" value="0" onChange=${(event) => onVirtuePointChange(abilityCount, dynData)} /></div>
-            </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
+            <div class="row py-3"></div>
+
+            <div class="row py-2">
                 <h1>ARSENAL ──────────</h1>
             </div>
             <${TableRows} abilityCount=${abilityCount} dynData=${dynData} />
-        </div>
 
-        <div class="container">
-            <div class="row">
+            <div class="row py-3"></div>
+
+            <div class="row py-2">
                 <h1>FORGE OF HOPE ITEM ──────────</h1>
             </div>
             <div class="row">
-                <div class="column column-10">ITEM TYPE:</div>
-                <div class="column"><input type="text" name="fhitem" /></div>
-                <div class="column column-20">CUSTOM ITEM NAME:</div>
-                <div class="column"><input type="text" name="fhname" /></div>
+                <div class="col col-auto">ITEM TYPE:</div>
+                <div class="col col-auto"><input class="form-control" type="text" name="fhitem" /></div>
+                <div class="col col-auto">CUSTOM ITEM NAME:</div>
+                <div class="col"><input class="form-control" type="text" name="fhname" /></div>
             </div>
-            <div class="row">
-                <div class="column column-10">EFFECT:</div>
-                <div class="column">
-                    <select id="fheffect" name="fheffect" onChange=${(event) => onForgeChange(event, dynData)} >
+            <div class="row py-2">
+                <div class="col col-auto">EFFECT:</div>
+                <div class="col col-md-4">
+                    <select class="form-control" id="fheffect" name="fheffect" onChange=${(event) => onForgeChange(event, dynData)} >
                         <${ForgeEffectNames} dynData=${dynData} />
                     </select>
                 </div>
-                <div class="column column-10">HOLY NUM:</div>
-                <div class="column"><input type="number" min="1" max="20" value="" name="fhholy" /></div>
-                <div class="column column-10">A/D:</div>
-                <div class="column"><input type="text" readonly id="fhad" name="fhad" /></div>
+                <div class="col col-auto">HOLY NUM:</div>
+                <div class="col col-sm-1"><input class="form-control" type="number" min="1" max="20" value="" name="fhholy" /></div>
+                <div class="col col-auto">A/D:</div>
+                <div class="col col-sm-1"><input class="form-control" type="text" readonly id="fhad" name="fhad" /></div>
             </div>
-        </div>
 
-        <div class="container">
-            <div class="row">
+            <div class="row py-3"></div>
+
+            <div class="row py-2">
                 <h1>MUNDUS STONE ──────────</h1>
             </div>
-            <div class="row">
-                <div class="column column-10">NAME:</div>
-                <div class="column column-25">
-                    <select id="msname" name="msname" onChange=${(event) => onMundusChange(event, dynData)} >
+            <div class="row py-2">
+                <div class="col col-auto">NAME:</div>
+                <div class="col col-auto">
+                    <select class="form-control" id="msname" name="msname" onChange=${(event) => onMundusChange(event, dynData)} >
                         <${MundusStoneNames} dynData=${dynData} />
                     </select>
                 </div>
-                <div class="column column-10">PASSIVE EFFECT:</div>
-                <div class="column"><input type="text" readonly id="mseffect" name="mseffect" /></div>
+                <div class="col col-auto">PASSIVE EFFECT:</div>
+                <div class="col"><input class="form-control" type="text" readonly id="mseffect" name="mseffect" /></div>
             </div>
-            <div class="row">
-                <div class="column">OVERSEER :</div>
-                <div class="column"><input type="text" id="msoverseer" name="msoverseer" /></div>
-                <div class="column">DATE:</div>
-                <div class="column"><input type="date" id="msdate" name="msdate" /></div>
+            <div class="row py-2">
+                <div class="col col-auto">OVERSEER :</div>
+                <div class="col col-md-4"><input class="form-control" type="text" id="msoverseer" name="msoverseer" /></div>
+                <div class="col col-auto">DATE:</div>
+                <div class="col col-auto"><input class="form-control" type="date" id="msdate" name="msdate" /></div>
             </div>
-        </div>
 
-        <div class="container">
+            <div class="row py-4"></div>
+
             <div class="row">
-                <div class="column">
-                    <input onClick=${(event) => handleSubmit(event)} type="button" class="button" value="Process"></input>
+                <div class="col">
+                    <input class="btn btn-primary" onClick=${(event) => handleSubmit(event)} type="button" class="button" value="Generate Markdown!"></input>
+                </div>
+            </div>
+
+            <div class="row py-4"></div>
+
+            <div class="row">
+                <div class="col">
+                    <div id="copyMessage">Copied to clipboard!</div>
+                    <label for="output">Output Markdown</label>
+                    <textarea class="form-control" readonly name="output" id="output"></textarea>
                 </div>
             </div>
         </div>
-
     </form>
-    <div class="container">
-        <div class="row">
-            <div class="column">
-                <div id="copyMessage">Copied to clipboard!</div>
-                <label for="output">Output Markdown</label>
-                <textarea readonly name="output" id="output"></textarea>
-            </div>
-        </div>
-    </div>
 </div>
 `);
 }
