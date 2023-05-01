@@ -50,7 +50,7 @@ async function handleSubmit(e) {
 &#10;
 &#10;
 
-## ${fields['path']}
+## - ${fields['path']} -
 
 &#10;
 &#10;
