@@ -100,7 +100,7 @@ Points Earned = ${fields['vp']}
 
 # MUNDUS STONE ──────────
 |NAME|PASSIVE EFFECT|OVERSEER |DATE|
-|---|---|---|
+|---|---|---|---|
 |${fields['msname']}|${fields['mseffect']}|${fields['msoverseer']}|${fields['msdate']}|`;
 
     const textarea = document.querySelector("textarea");
