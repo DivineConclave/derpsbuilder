@@ -17,7 +17,7 @@ function filterAbilities(index, abilityCount, dynData) {
 
         return dynData.generalAbilities.filter(ability => {
             //ability.req is a comma-separated list of requirements, e.g. "1 Fortitude, 2 Cunning" -- need to parse case insensitively and ignore more than one space in a token
-            const reqs = ability.req.replace('&nbsp;', ' ').split(',').map(req => req.trim().toLowerCase());
+            const reqs = ability.req.split(',').map(req => req.trim().toLowerCase());
             const skillCheck = reqs.every(req => {
                 const reqValue = parseInt(req.charAt(0).toLowerCase());
                 const stat = req.slice(1).trim().charAt(0);
