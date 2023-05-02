@@ -48,23 +48,23 @@ async function handleSubmit(e) {
 &#10;
 
 # ${fields['charName']}
-
-## ${fields['quote']}
-
-&#10;
-&#10;
-
-## - ${fields['path']} -
+_${fields['quote']}_
 
 &#10;
 &#10;
 
-## ${fields['writ']}
+## ────────── ${fields['path']} ──────────
 
 &#10;
 &#10;
 
-# ARENA STATS ──────────
+## WRIT OF ASCENSION
+${fields['writ']}
+
+&#10;
+&#10;
+
+# 𖤓 ARENA STATS
 | HP: ${fields['hp']} | SP: ${fields['sp']} | MP: ${fields['mp']} | 
 |----------|----------|----------|
 | Calling: ${fields['calling']} | Paragon: ${fields['paragon']}   | Participation: +${fields['league']} |
@@ -72,7 +72,7 @@ async function handleSubmit(e) {
 &#10;
 &#10;
 
-# VIRTUE POINTS ──────────
+# 𖤓 VIRTUE POINTS
 Points Earned = ${fields['vp']}
 
 |VIRTUE     |GIVES|Points|
@@ -84,7 +84,7 @@ Points Earned = ${fields['vp']}
 &#10;
 &#10;
 
-# ARSENAL ──────────
+# 𖤓 ARSENAL
 |NAME|EXPLANATION|COST|REQ|
 |---|---|---|---|
 |${fields['ability1']}|${fields['exp1']}|${fields['cost1']}|${fields['req1']}|
@@ -94,7 +94,7 @@ Points Earned = ${fields['vp']}
 &#10;
 &#10;
 
-# FORGE OF HOPE ITEM ──────────
+# 𖤓 FORGE OF HOPE ITEM
 |ITEM|NAME|EFFECT|HOLY NUM|
 |---|---|---|---|
 |${fields['fhitem']}|${fields['fhname']}|${fields['fheffect']}|${fields['fhholy']}${fields['fhad']}|
@@ -102,7 +102,7 @@ Points Earned = ${fields['vp']}
 &#10;
 &#10;
 
-# MUNDUS STONE ──────────
+# 𖤓 MUNDUS STONE
 |NAME|PASSIVE EFFECT|OVERSEER |DATE|
 |---|---|---|---|
 |${fields['msname']}|${fields['mseffect']}|${fields['msoverseer']}|${fields['msdate']}|`;
