@@ -348,6 +348,11 @@
     ],
     "forgeEffects": [
         {
+            "name": "N/A",
+            "effect": "",
+            "proc": ""
+        },
+        {
             "name": "SMITE",
             "effect": "Deal 1 irreducible direct damage.",
             "proc": "a"
