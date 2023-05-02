@@ -103,7 +103,7 @@ Points Earned = ${fields['vp']}
 |---|---|---|---|
 |${fields['msname']}|${fields['mseffect']}|${fields['msoverseer']}|${fields['msdate']}|`;
 
-    const textarea = document.querySelector("textarea");
+    const textarea = document.getElementById("output");
     textarea.value = md;
     textarea.select();
     textarea.setSelectionRange(0, textarea.value.length);
