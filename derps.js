@@ -22,11 +22,15 @@ async function handleSubmit(e) {
     let fields = Array.from(form.elements).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
 
     //Post-process the fields
+    const doNbsp = (text) => {
+        const regex = /(\d+)\s*(HP|SP|MP|FORT|CUN|JUD|Fortitude|Cunning|Judgement|Judgment)/gi;
+        return text.replace(regex, '$1&nbsp;$2');
+    }
 
-    //Remove extraneous spaces from the values of all text fields
+    //Remove extraneous spaces from the values of all text fields and replace certain spaces with &nbsp;
     for (const [key, value] of Object.entries(fields)) {
         if (typeof value === 'string') {
-            fields[key] = value.trim();
+            fields[key] = doNbsp(value.trim());
         }
     }
 
