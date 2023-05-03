@@ -256,7 +256,7 @@
         {
             "name": "Enchanted Weapon",
             "type": "reactive",
-            "exp": "1 MP: After your successful hit, deal 1 direct damage and 1 irreducible direct damage to your target. OR 2 MP: After your successful hit, deal 1 direct damage and 1 irreducible direct damage to your target. Gain +3 defense for one round.",
+            "exp": "1 MP: After your successful hit, deal 1 direct damage and 1 irreducible direct damage to your target. OR 2 MP: After your successful hit, deal 1 direct damage and 1 irreducible direct damage to your target. Gain +3 attack for one round.",
             "cost": "1 MP OR 2 MP",
             "req": "Spellblade"
         },
