@@ -59,18 +59,18 @@ async function handleSubmit(e, dynData) {
 &#10;
 
 # ${fields['charName']}
-
-## ${fields['quote']}
-
-&#10;
-&#10;
-
-## - ${fields['path']} -
+_${fields['quote']}_
 
 &#10;
 &#10;
 
-## ${fields['writ']}
+## ────────── ${fields['path']} ──────────
+
+&#10;
+&#10;
+
+## WRIT OF ASCENSION
+${fields['writ']}
 
 &#10;
 &#10;
