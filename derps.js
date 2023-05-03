@@ -16,11 +16,10 @@ async function fetchAndParseJSON() {
     }
 }
 
-async function handleSubmit(e, dynData) {
+async function handleSubmit(e) {
     e.preventDefault();
     const form = document.getElementById("form");
     let fields = Array.from(form.elements).reduce((acc, el) => ({ ...acc, [el.name]: el.value }), {});
-    const allAbilities = dynData.callingAbilities.concat(dynData.generalAbilities);
 
     //Post-process the fields
     const doNbsp = (text) => {
@@ -32,15 +31,6 @@ async function handleSubmit(e, dynData) {
     for (const [key, value] of Object.entries(fields)) {
         if (typeof value === 'string') {
             fields[key] = doNbsp(value.trim());
-        }
-
-        //Add [active], [passive] or [reactive] to ability descriptions
-        if (key.startsWith('ability')) {
-            const abilityName = value;
-            const ability = allAbilities.find(ability => ability.name === abilityName);
-            const abilityType = ability.type;
-            const abilityNumber = key.slice(-1);
-            fields[`exp${abilityNumber}`] = `[${abilityType}] ${fields[`exp${abilityNumber}`]}`;
         }
     }
 

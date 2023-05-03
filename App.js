@@ -193,9 +193,11 @@ function onMundusChange(event, dynData) {
 function onAbilityChange(event, index, dynData) {
     console.log("onAbilityChange called")
     const selectedAbility = dynData.callingAbilities.concat(dynData.generalAbilities).find(ability => ability.name === event.target.value);
+    //Add [active], [passive] or [reactive] to ability descriptions
+    const abilityType = selectedAbility?.type ? `[${selectedAbility.type}] ` : '';
 
-    if (selectedAbility) {
-        document.getElementById(`exp${index}`).value = selectedAbility.exp;
+    if (selectedAbility && selectedAbility.name != 'N/A') {
+        document.getElementById(`exp${index}`).value = `${abilityType}${selectedAbility.exp}`;
         document.getElementById(`cost${index}`).value = selectedAbility.cost;
         document.getElementById(`req${index}`).value = selectedAbility.req;
     } else {
@@ -546,7 +548,7 @@ function App() {
 
             <div class="row">
                 <div class="col">
-                    <input class="btn btn-primary" onClick=${(event) => handleSubmit(event, dynData)} type="button" class="button" value="Generate Markdown!"></input>
+                    <input class="btn btn-primary" onClick=${(event) => handleSubmit(event)} type="button" class="button" value="Generate Markdown!"></input>
                 </div>
             </div>
 
