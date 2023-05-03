@@ -546,7 +546,7 @@ function App() {
 
             <div class="row">
                 <div class="col">
-                    <input class="btn btn-primary" onClick=${(event) => handleSubmit(event)} type="button" class="button" value="Generate Markdown!"></input>
+                    <input class="btn btn-primary" onClick=${(event) => handleSubmit(event, dynData)} type="button" class="button" value="Generate Markdown!"></input>
                 </div>
             </div>
 
