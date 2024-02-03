@@ -44,7 +44,7 @@
             "NO CALLING",
             "SPELLBLADE",
             "MYSTIC",
-            "WARLOCK"
+            "SORCERER"
         ]
     },
     "generalAbilities": [
@@ -268,11 +268,11 @@
             "req": "Mystic"
         },
         {
-            "name": "Elemental Barrage",
+            "name": "Righteous Burden",
             "type": "active",
-            "exp": "1 MP: Gain +2 damage. OR 2 MP: Select up to 3 targets for your attack. Increase your attack roll by +2. Holy and Mundus activations only activate on the first target of your Declare.",
+            "exp": "1MP: On hit, enemy receives -4 defense for one round OR sacrifices 1HP to the caster (enemy takes 1 irreducible damage and caster is healed for 1HP). The effect is chosen by the target. OR 2MP: Select up to 3 targets for your attack. A target hit by this attack suffers -2 defense until your next turn. Holy and Mundus activations only activate on the first target of your Declare.",
             "cost": "1 MP OR 2 MP",
-            "req": "Warlock"
+            "req": "Sorcerer"
         }
     ],
     "mundusEffects": [
