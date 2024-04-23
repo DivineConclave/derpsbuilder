@@ -156,7 +156,7 @@
         {
             "name": "Tactical Retreat",
             "type": "reactive",
-            "exp": "Reroll your defense rolls this turn with a maximum bonus of d20 + Participation. You must keep the new rolls. Holy and Mundus effects do not activate on the reroll from this ability.",
+            "exp": "Reroll all your defense rolls this turn with a maximum bonus of d20 + Participation. You must keep the new rolls. Holy and Mundus effects do not activate on the reroll from this ability.",
             "cost": "1 SP or 1 MP",
             "req": "2 Cunning"
         },
@@ -177,7 +177,7 @@
         {
             "name": "Foresight",
             "type": "passive",
-            "exp": "On a successful attack hit, gain a stacking +2 attack (max +4 from this ability). On a missed attack, lose one stack of Foresight once per turn. The first attack target of your Declare determines if you gain or lose the bonus for the next round if used with an ability that selects multiple targets.",
+            "exp": "Gain +1 attack. On a successful hit, gain a stacking +1 attack (max +3 total from this ability). The first attack target of your Declare determines if you gain the bonus for the next round when used with an ability that selects multiple targets.",
             "cost": "N/A",
             "req": "1 Cunning"
         },
@@ -221,8 +221,8 @@
         {
             "name": "Divine Fury",
             "type": "active",
-            "exp": "1 SP: Gain +1 damage and gain a bonus to attack equal to your missing HP. Additionally, you may choose to spend 1 HP. If you do, gain an additional +1 damage but you cannot be healed (except by Forge abilities) until the start of your next turn. OR 2 SP: Select up to 3 targets for your attack. Gain a bonus to attack on this turn equal to 1/2 your missing HP rounded up. Holy and Mundus activations only activate on the first target of your Declare.",
-            "cost": "1 SP OR 2 SP",
+            "exp": "1 SP or 1 HP: Gain +1 damage and gain a bonus to attack equal to your missing HP (max +4 from this ability). If you use HP, you cannot be healed (except by Holy item abilities) until the start of your next turn. OR 2 SP: Select up to 3 targets for your attack. Gain a bonus to attack on this turn equal to your missing HP (max +4 from this ability). Holy item and Mundus activations only activate on the first target of your Declare.",
+            "cost": "1 SP or 1 HP OR 2 SP",
             "req": "Zealot"
         },
         {
