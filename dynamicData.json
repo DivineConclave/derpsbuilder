@@ -359,33 +359,33 @@
         },
         {
             "name": "HINDER",
-            "effect": "-4 to your target's next attack roll",
+            "effect": "-6 to your target's next attack roll",
             "proc": "a"
         },
         {
             "name": "SLOW",
-            "effect": "-4 to your target's next defense roll",
+            "effect": "-6 to your target's next defense roll",
             "proc": "a"
         },
         {
             "name": "BURN",
-            "effect": "Deal 1 direct damage immediately. If this first point of damage is not reduced, deal an additional 1 direct damage to the same target at the start of your next turn.",
+            "effect": "Deal 1 direct damage immediately. Deal an additional 1 direct damage to the same target at the start of your next turn.",
             "proc": "a"
         },
         {
             "name": "INSPIRE",
-            "effect": "Gain +4 to your current rolled attack",
+            "effect": "Gain +6 to your current rolled attack",
             "proc": "a"
         },
         {
             "name": "PROTECT",
-            "effect": "Gain +4 to your current rolled defense",
+            "effect": "Gain +6 to your current rolled defense",
             "proc": "d"
         },
         {
             "name": "HEAL",
             "effect": "Heal yourself for 2 HP (may not exceed your current HP cap)",
-            "proc": "a"
+            "proc": "d"
         },
         {
             "name": "REVEAL",
@@ -420,6 +420,21 @@
         {
             "name": "COUNTER",
             "effect": "Deal 1 irreducible direct damage.",
+            "proc": "d"
+        },
+        {
+            "name": "EMBOLDEN",
+            "effect": "Gain +2SP. This may be split up as +1SP/+1SP to any friendly targets. (May not exceed your current SP cap).",
+            "proc": "d"
+        },
+        {
+            "name": "EMPOWER",
+            "effect": "Gain +2MP. This may be split up as +1MP/+1MP to any friendly targets. (May not exceed your current MP cap).",
+            "proc": "d"
+        },
+        {
+            "name": "INVIGORATE",
+            "effect": "Gain +1SP & +1MP. This may be split up among friendly targets. (May not exceed your current MP/SP cap).",
             "proc": "d"
         }
     ]
