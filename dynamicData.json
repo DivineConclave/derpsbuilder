@@ -65,14 +65,14 @@
         {
             "name": "Rejuvenation Expert",
             "type": "active",
-            "exp": "Restore 1 MP or 1 SP to an ally. Your target also gains +1 attack for one round.",
+            "exp": "Restore 1 MP or 1 SP to a friendly target. Your target also gains +1 attack for one round.",
             "cost": "1 MP or 1 SP",
             "req": "1 Judgement"
         },
         {
             "name": "Magickal Healer",
             "type": "active",
-            "exp": "Heal one ally for 2 HP or revive a single ally from 0 HP to 1 HP.",
+            "exp": "Heal one friendly target for 2 HP or revive a single friendly target from 0 HP to 1 HP.",
             "cost": "1 MP",
             "req": "1 Judgement"
         },
@@ -135,7 +135,7 @@
         {
             "name": "Bodyguard",
             "type": "reactive",
-            "exp": "When a friendly member is targeted by an attack, make yourself the target in their place. You gain +2 defense for the turn. This must be declared after someone is named a target, and before their defense rolls.",
+            "exp": "When a friendly target is targeted by an attack, make yourself the target in their place. You gain +2 defense for the turn. This must be declared after someone is named a target, and before their defense rolls.",
             "cost": "1 SP",
             "req": "1 Fortitude"
         },
@@ -149,7 +149,7 @@
         {
             "name": "Intervention",
             "type": "reactive",
-            "exp": "Reduce the damage a target receives from a hit or ability by 1. The target that you negated damage for also receives +2 attack for one round.",
+            "exp": "Reduce the damage a friendly target receives from a hit or ability by 1. The target that you negated damage for also receives +2 attack for one round.",
             "cost": "1 MP",
             "req": "2 Judgement"
         },
@@ -184,7 +184,7 @@
         {
             "name": "Opportunist",
             "type": "passive",
-            "exp": "Gain +4 attack against a target on your next turn if you have defended against ALL of their attacks. If you are not targeted by any attacks since your last turn OR you go before your enemy on the first round, gain a +2 attack. Gain a +4 to initiative.",
+            "exp": "Gain +4 attack against a target on your next turn if you have defended their attack. If you are not targeted by any attacks since your last turn OR you go before your enemy on the first round, gain a +2 attack. Gain a +4 to initiative.",
             "cost": "N/A",
             "req": "2 Cunning, 1 Fortitude"
         },
@@ -214,7 +214,7 @@
         {
             "name": "Wall of Steel",
             "type": "reactive",
-            "exp": "1 SP: Reduce damage up to three targets receive from a hit or ability by 1 each. OR 2 SP: Reduce damage a target receives from a hit or ability by 2. The target that you reduced damage for also receives +4 defense for one round.",
+            "exp": "1 SP: Reduce damage up to three friendly targets receive from a hit or ability by 1 each. OR 2 SP: Reduce damage a friendly target receives from a hit or ability by 2. The target that you reduced damage for also receives +4 defense for one round.",
             "cost": "1 SP OR 2 SP",
             "req": "Knight"
         },
@@ -247,9 +247,9 @@
             "req": "Infiltrator"
         },
         {
-            "name": "Quick Strike",
+            "name": "Provoke",
             "type": "active",
-            "exp": "1 MP: Gain +2 attack and +1 damage this turn. OR 1 SP & 1 MP: Select up to 3 targets for your attack. A target hit by this attack suffers -2 attack until your next turn. Holy and Mundus activations only activate on the first target of your Declare.",
+            "exp": "1 MP: Gain +2 defense and +1 damage this turn. If you successfully defend an attack before the start of your next turn, you also gain +2 attack against that attacker. OR 1 SP & 1 MP: Gain +3 defense and specify 1 target to taunt. For one round, they receive -4 attack when targeting any other target than you, and take 1 irreducible damage on your next Declare if they do not target you. If the Taunted target deals damage to you while this effect is active, reduce the damage by 1.",
             "cost": "1 MP OR 1 SP and 1 MP",
             "req": "Duelist"
         },
@@ -270,7 +270,7 @@
         {
             "name": "Righteous Burden",
             "type": "active",
-            "exp": "1MP: On hit, enemy receives -4 defense for one round OR sacrifices 1HP to the caster (enemy takes 1 irreducible damage and caster is healed for 1HP). The effect is chosen by the target. OR 2MP: Select up to 3 targets for your attack. A target hit by this attack suffers -2 defense until your next turn. Holy and Mundus activations only activate on the first target of your Declare.",
+            "exp": "1MP: On hit, enemy receives -4 defense for one round OR sacrifices 1HP to the caster (enemy takes 1 irreducible damage and caster is healed for 1HP). The caster decides which effect applies. OR 2MP: Select up to 3 targets for your attack. A target hit by this attack suffers -2 defense for one round. Holy item and Mundus activations only activate on the first target of your Declare.",
             "cost": "1 MP OR 2 MP",
             "req": "Sorcerer"
         }
